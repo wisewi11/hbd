@@ -36,7 +36,7 @@ export default class World
             const speed = 1.0
             const amplitude = 1.0
             const DNA = new THREE.Group()
-            for (let i = -lineLength; i < lineLength; i+=0.02*Math.random()) {
+            for (let i = -lineLength; i < lineLength; i+=0.1*Math.random()) {
                 points.push( new THREE.Vector3( Math.random()*thickness, Math.random()*thickness, i) );
             }
             this.material = new THREE.ShaderMaterial({
@@ -74,11 +74,12 @@ export default class World
             
 
 
-            for(let i = 0; i < 3; i+= 0.09){
+            for(let i = 0; i < 4; i+= 0.09){
                 var DNA2 = DNA.clone()
                 DNA2.position.y +=i
+                DNA2.rotation.y += Math.random()
                 DNA2.rotation.x +=  1.0 *  (Math.random() - 0.0) + i/4
-                // DNA2.rotation.z +=  1.0 *  (Math.random() - 0.0) + i/4
+                // DNA2.rotation.z +=  Math.PI
                 this.scene.add(DNA2)
             }
             // this.spectra = new Spectra()
