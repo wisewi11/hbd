@@ -39,7 +39,7 @@ export default class World
             for (let i = -lineLength; i < lineLength; i+=0.02*Math.random()) {
                 points.push( new THREE.Vector3( Math.random()*thickness, Math.random()*thickness, i) );
             }
-            const material = new THREE.ShaderMaterial({
+            this.material = new THREE.ShaderMaterial({
                 vertexShader: DNAbackboneVertexShader,
                 fragmentShader: DNAbackboneFragmentShader,
                 uniforms: {
@@ -50,7 +50,7 @@ export default class World
                 },
                 side: THREE.DoubleSide
             });
-            const material2 = new THREE.ShaderMaterial({
+            this.material2 = new THREE.ShaderMaterial({
                 vertexShader: DNAbackboneVertexShader,
                 fragmentShader: DNAbackboneFragmentShader,
                 uniforms: {
@@ -87,5 +87,7 @@ export default class World
     }
     update() {
         // this.circles.update()
+        this.material.uniforms.uTime.value = elapsedTime;
+        this.material2.uniforms.uTime.value = elapsedTime;
     }
 }
