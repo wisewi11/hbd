@@ -17,7 +17,7 @@ export default class Controllers
         var audio = new Audio('audio/common_voice_en_10.mp3');
         // audio.play();   
         const onSelectStart = function(){
-            audio.play();
+            // audio.play();
         }
         this.controller1.addEventListener( 'selectstart', onSelectStart );
         // this.controller1.addEventListener( 'selectend', onSelectEnd );

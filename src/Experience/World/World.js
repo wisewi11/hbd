@@ -39,7 +39,7 @@ export default class World
             for (let i = -lineLength; i < lineLength; i+=0.02*Math.random()) {
                 points.push( new THREE.Vector3( Math.random()*thickness, Math.random()*thickness, i) );
             }
-            const material = new THREE.ShaderMaterial({
+            this.material = new THREE.ShaderMaterial({
                 vertexShader: DNAbackboneVertexShader,
                 fragmentShader: DNAbackboneFragmentShader,
                 uniforms: {
@@ -50,7 +50,7 @@ export default class World
                 },
                 side: THREE.DoubleSide
             });
-            const material2 = new THREE.ShaderMaterial({
+            this.material2 = new THREE.ShaderMaterial({
                 vertexShader: DNAbackboneVertexShader,
                 fragmentShader: DNAbackboneFragmentShader,
                 uniforms: {
@@ -64,19 +64,21 @@ export default class World
             });
             const geometry = new THREE.BufferGeometry().setFromPoints( points );
             // const backbone1 = new THREE.Line( geometry, material );
-            const backbone1 = new THREE.Points(geometry,material)
+            const backbone1 = new THREE.Points(geometry,this.material)
             // const backbone2 = new THREE.Line( geometry, material2 );
-            const backbone2 = new THREE.Points( geometry, material2 );
+            const backbone2 = new THREE.Points( geometry, this.material2 );
             // line2.position.z += 8.0;
             DNA.add(backbone1)
             DNA.add(backbone2)
             DNA.rotation.x += 1.111111
+            
 
 
-            for(let i = 0; i < 2; i+= 0.09){
+            for(let i = 0; i < 3; i+= 0.09){
                 var DNA2 = DNA.clone()
                 DNA2.position.y +=i
                 DNA2.rotation.x +=  1.0 *  (Math.random() - 0.0) + i/4
+                // DNA2.rotation.z +=  1.0 *  (Math.random() - 0.0) + i/4
                 this.scene.add(DNA2)
             }
             // this.spectra = new Spectra()
@@ -87,7 +89,6 @@ export default class World
     }
     update() {
         // this.circles.update()
-        // this.material.uniforms.uTime.value = elapsedTime;
-        // this.material2.uniforms.uTime.value = elapsedTime;
+
     }
 }
