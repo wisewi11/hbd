@@ -18,15 +18,15 @@ void main() {
     o += uTime;
     // p.z += o;
 
-    p.y += amplitude * sin(p.z * speed +o);
-    p.x += amplitude * cos(p.z *speed +o);
+    p.y += amplitude * cos(p.z * speed +o);
+    p.x += amplitude * sin(p.z *speed +o);
     vec4 modelPosition = modelMatrix * vec4(p, 1.0);
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
     vP = p;
     vP2 = p.xyz;
     // vUv = uv;
-    gl_PointSize =  4.0 + 1.2 * sin(p.z * speed +o);
+    gl_PointSize =  4.0 + 1.2 * sin(p.z * speed +o)*1.5;
     gl_Position = projectedPosition;
 
 }

@@ -15,13 +15,13 @@ void main() {
     o += uTime;
     // p.z += o;
 
-    p.y = position.y * sin(p.z * speed +o);
-    p.x += position.y * cos(p.z *speed +o);
+    p.y = position.y * cos(p.z * speed +o);
+    p.x -= position.y * sin(p.z *speed +o);
     vec4 modelPosition = modelMatrix * vec4(p, 1.0);
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
     // vP = p;
-    gl_PointSize =  1.0;
+    gl_PointSize =  10;
     gl_Position = projectedPosition;
 
 }
